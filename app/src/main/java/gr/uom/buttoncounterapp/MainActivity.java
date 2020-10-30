@@ -90,8 +90,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
         Log.d(LOG_TAG, "onSaveInstanceState");
+
+        outState.putString("MainActivity_textView", textView.getText().toString());
+
+        super.onSaveInstanceState(outState);
+
 
     }
 
@@ -100,6 +104,8 @@ public class MainActivity extends AppCompatActivity {
         super.onRestoreInstanceState(savedInstanceState);
         Log.d(LOG_TAG, "onRestoreInstanceState");
 
+        String savedText = savedInstanceState.getString("MainActivity_textView");
+        textView.setText(savedText);
     }
 
 
