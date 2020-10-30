@@ -10,12 +10,12 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button button;
-    private TextView textView;
-    private int clickCounter = 0;
+    public static final String TEXT_CONTENTS = "MainActivity_textView";
+    private static  int clickCounter = 0;
     private static final String LOG_TAG = "TestLog";
 
-
+    private Button button;
+    private TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         Log.d(LOG_TAG, "onSaveInstanceState");
 
-        outState.putString("MainActivity_textView", textView.getText().toString());
+        outState.putString(TEXT_CONTENTS, textView.getText().toString());
 
         super.onSaveInstanceState(outState);
 
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         super.onRestoreInstanceState(savedInstanceState);
         Log.d(LOG_TAG, "onRestoreInstanceState");
 
-        String savedText = savedInstanceState.getString("MainActivity_textView");
+        String savedText = savedInstanceState.getString(TEXT_CONTENTS);
         textView.setText(savedText);
     }
 
